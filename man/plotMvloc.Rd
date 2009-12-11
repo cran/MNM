@@ -8,10 +8,11 @@
 \usage{
 plotMvloc(est1, est2 = NULL, est3 = NULL, X = NULL, alim = NULL, 
           color.ell = 2:4, color.points = grey(0.5), 
-          lty.ell = rep(1, 3), pch.ell = rep(16, 3), pch.points = 1, 
-          level = 0.95, npoints = 100, x.legend, y.legend, 
-          cex.legend = 1, pty = "s", gap = 1, oma.bottom, 
-          labels, cex.labels = 2, main, ...)
+          lty.ell = rep(1, 3), pch.ell = rep(16, 3), 
+          lwd.ell = rep(1, 3), cex.ell = rep(1, 3), 
+          pch.points = 1, level = 0.95, npoints = 100, 
+          x.legend, y.legend, cex.legend = 1, pty = "s", gap = 1, 
+          oma.bottom, labels, cex.labels = 2, main, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -25,6 +26,8 @@ plotMvloc(est1, est2 = NULL, est3 = NULL, X = NULL, alim = NULL,
   \item{color.points}{the color of the data points. }
   \item{lty.ell}{line types of the confidence ellipsoids.  }
   \item{pch.ell}{plotting symbols for the location estimates, the centers of the confidence ellipsoids. }
+  \item{lwd.ell}{line width values of the confidence ellipsoids. }
+  \item{cex.ell}{cex values for the location estimates, the centers of the confidence ellipsoids. }
   \item{pch.points}{plotting symbol for the data points \code{X}.  }
   \item{level}{ the level of the confidence ellipsoids.}
   \item{npoints}{the number of points used to approximate each ellipsoid.}

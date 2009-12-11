@@ -15,19 +15,24 @@
   n <- nlevels(block)
   N <- dim(x)[1]
 
-  #Calculate the treatment difference estimates
-  res<-vector("list", k-1)
-  for(i in 2:k){
-    diff<-x[treatment==levels(treatment)[i],]-
-      x[treatment==levels(treatment)[1],]
-    delta<-apply(diff,2,mean)
-    METHOD<-"affine equivariant treatment difference estimate (identity score)"
-    dn<-paste("Delta",levels(treatment)[i],"-Delta",levels(treatment)[1],sep="")
-    S<-(1/N)*t(x)%*%x
-    res[[i-1]]<-list(location=delta,vcov=S,est.name=METHOD,dname=dn)
-    class(res[[i-1]])<-"mvloc"
-  }
+  #Calculate the asymptotic covariance matrix of the location estimates
+  S<-(2/(n*N))*t(x)%*%x
 
+  #Calculate the treatment difference estimates
+  res<-vector("list", k*(k-1)/2)
+  ind<-0
+  for(i in 1:(k-1)){
+    for(j in (i+1):k){
+      ind<-ind+1
+      diff<-x[treatment==levels(treatment)[j],]-
+            x[treatment==levels(treatment)[i],]
+      delta<-apply(diff,2,mean)
+      METHOD<-"affine equivariant treatment difference estimate (identity score)"
+      dn<-paste("mu",levels(treatment)[j],"-mu",levels(treatment)[i],sep="")
+      res[[ind]]<-list(location=delta,vcov=S,est.name=METHOD,dname=dn)
+      class(res[[ind]])<-"mvloc"
+    }
+  }
   return(res)
 }
 
@@ -45,39 +50,66 @@
   n <- nlevels(block)
   N <- dim(x)[1]
 
+  Delta<-vector("list", k)
+  for(ii in 1:k){
+     Delta[[ii]]<-vector("list", k)
+     Delta[[ii]][[ii]]<-matrix(0,1,d)
+  }
+  
   switch(stand,
          "inner"=
          {
            METHOD <- "affine equivariant treatment difference estimate (sign score)"
            sqrtG<-inner.sign(x=x,block=block,eps=eps,maxiter=maxiter)$sqrtG
            z <- x%*%t(solve(sqrtG))    
-           Delta<-vector("list", k-1)
-           for(i in 2:k){
-              delta<-spatial.median(z[treatment==levels(treatment)[i],],eps=eps,maxiter=maxiter)-
-                     spatial.median(z[treatment==levels(treatment)[1],],eps=eps,maxiter=maxiter)
-              Delta[[i-1]]<-delta%*%t(sqrtG)
+           for(i in 1:(k-1)){
+             for(j in (i+1):k){
+               diff<-z[treatment==levels(treatment)[j],]-
+                     z[treatment==levels(treatment)[i],]
+               delta<-spatial.median(diff,eps=eps,maxiter=maxiter)
+               Delta[[i]][[j]]<-delta%*%t(sqrtG)
+               Delta[[j]][[i]]<- -Delta[[i]][[j]]
+             }
            }
          },
          "outer"=
          {
            METHOD <- "treatment difference estimate (sign score)"
-           Delta<-vector("list", k-1)
-           for(i in 2:k){
-              delta<-spatial.median(x[treatment==levels(treatment)[i],],eps=eps,maxiter=maxiter)-
-                     spatial.median(x[treatment==levels(treatment)[1],],eps=eps,maxiter=maxiter)
-              Delta[[i-1]]<-delta
+           for(i in 1:(k-1)){
+             for(j in (i+1):k){
+               diff<-x[treatment==levels(treatment)[j],]-
+                     x[treatment==levels(treatment)[i],]
+               delta<-spatial.median(diff,eps=eps,maxiter=maxiter)
+               Delta[[i]][[j]]<-delta
+               Delta[[j]][[i]]<- -Delta[[i]][[j]]               
+             }
            } 
          }
          )
 
-  res<-vector("list", k-1) 
+
+  #Calculate the asymptotic covariance matrix of the location estimates
   S<-NULL
-  for(i in 2:k){
-    dn<-paste("Delta",levels(treatment)[i],"-Delta",levels(treatment)[1],sep="")
-    res[[i-1]]<-list(location=Delta[[i-1]],vcov=S,est.name=METHOD,dname=dn)
-    class(res[[i-1]])<-"mvloc"
-  }
   
+  #Calculate the adjusted treatment difference estimates
+  res<-vector("list", k*(k-1)/2)
+  ind<-0
+  for(i in 1:(k-1)){
+    for(j in (i+1):k){
+      ind<-ind+1
+      dn<-paste("mu",levels(treatment)[j],"-mu",levels(treatment)[i],sep="")
+      s1<-rep(0,d)
+      s2<-rep(0,d)
+      for(ii in 1:k){
+        s1<-s1+Delta[[i]][[ii]]
+        s2<-s2+Delta[[j]][[ii]]
+      }
+      delta<-(s1-s2)/k
+      res[[ind]]<-list(location=delta,vcov=S,est.name=METHOD,dname=dn)
+      class(res[[ind]])<-"mvloc"
+    }
+  }
+    
   return(res)
 }
 
@@ -113,10 +145,11 @@
            z <- x%*%t(solve(sqrtG))    
            for(i in 1:(k-1)){
              for(j in (i+1):k){
-                delta<-spatial.median(z[treatment==levels(treatment)[j],]-
-                                      z[treatment==levels(treatment)[i],],eps=eps,maxiter=maxiter)
-                Delta[[i]][[j]]<-delta%*%t(sqrtG)
-                Delta[[j]][[i]]<- -Delta[[i]][[j]]
+               diff<-z[treatment==levels(treatment)[j],]-
+                     z[treatment==levels(treatment)[i],]
+               delta<-spatial.median(diff,eps=eps,maxiter=maxiter)
+               Delta[[i]][[j]]<-delta%*%t(sqrtG)
+               Delta[[j]][[i]]<- -Delta[[i]][[j]]
              }
            }
          },
@@ -126,10 +159,11 @@
            rx<-outer.rank(x=x,block=block)
            for(i in 1:(k-1)){
              for(j in (i+1):k){
-              delta<-spatial.median(x[treatment==levels(treatment)[j],]-
-                                    x[treatment==levels(treatment)[i],],eps=eps,maxiter=maxiter)
-              Delta[[i]][[j]]<-delta
-              Delta[[j]][[i]]<- -Delta[[i]][[j]]
+               diff<-x[treatment==levels(treatment)[j],]-
+                     x[treatment==levels(treatment)[i],]
+               delta<-spatial.median(diff,eps=eps,maxiter=maxiter)
+               Delta[[i]][[j]]<-delta
+               Delta[[j]][[i]]<- -Delta[[i]][[j]]
              }
            } 
          }
@@ -149,22 +183,25 @@
   }
   A<-(2/(k*(k-1)))*A
   inv.A<-solve(A)
-  S<-(2*k/(k-1))*inv.A%*%B%*%inv.A
-
+  S<-(1/n)*(2*k/(k-1))*inv.A%*%B%*%inv.A
 
   #Calculate the adjusted treatment difference estimates
-  res<-vector("list", k-1)
-  for(i in 2:k){
-    dn<-paste("Delta",levels(treatment)[i],"-Delta",levels(treatment)[1],sep="")
-    s1<-rep(0,d)
-    s2<-rep(0,d)
-    for(ii in 1:k){
-      s1<-s1+Delta[[1]][[ii]]
-      s2<-s2+Delta[[i]][[ii]]
+  res<-vector("list", k*(k-1)/2)
+  ind<-0
+  for(i in 1:(k-1)){
+    for(j in (i+1):k){
+      ind<-ind+1
+      dn<-paste("mu",levels(treatment)[j],"-mu",levels(treatment)[i],sep="")
+      s1<-rep(0,d)
+      s2<-rep(0,d)
+      for(ii in 1:k){
+        s1<-s1+Delta[[i]][[ii]]
+        s2<-s2+Delta[[j]][[ii]]
+      }
+      delta<-(s1-s2)/k
+      res[[ind]]<-list(location=delta,vcov=S,est.name=METHOD,dname=dn)
+      class(res[[ind]])<-"mvloc"
     }
-    delta<-(s1-s2)/k
-    res[[i-1]]<-list(location=delta,vcov=S,est.name=METHOD,dname=dn)
-    class(res[[i-1]])<-"mvloc"
   }
     
   return(res)

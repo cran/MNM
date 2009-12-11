@@ -1,6 +1,6 @@
 `plotMvloc` <-
-function(est1,est2 = NULL ,est3 = NULL, X=NULL, alim = NULL, color.ell=2:4, color.points=grey(0.5), lty.ell= rep(1,3), pch.ell=rep(16,3), pch.points=1,level=0.95,npoints = 100,
-                x.legend, y.legend, cex.legend = 1, pty="s", gap=1, oma.bottom, labels, cex.labels=2, main, ...)
+function(est1,est2 = NULL ,est3 = NULL, X=NULL, alim = NULL, color.ell=2:4, color.points=grey(0.5), lty.ell= rep(1,3), pch.ell=rep(16,3), lwd.ell=rep(1,3), cex.ell=rep(1,3),
+         pch.points=1,level=0.95,npoints = 100, x.legend, y.legend, cex.legend = 1, pty="s", gap=1, oma.bottom, labels, cex.labels=2, main, ...)
 {
 opar <-  par(no.readonly = TRUE)
 p <- ncol(est1$vcov)
@@ -58,9 +58,9 @@ for (j in 1:p)
            
            
            
-           plot(ell,type="l",axes=F, ylim=y.limits,xlim=x.limits, col=color.ell[1], lty=lty.ell[1], xlab="",ylab="")
+           plot(ell,type="l",axes=F, ylim=y.limits,xlim=x.limits, col=color.ell[1], lty=lty.ell[1], lwd=lwd.ell[1], xlab="",ylab="")
            box()
-           points(est1$location[i],est1$location[j],pch=pch.ell[1], col=color.ell[1])
+           points(est1$location[i],est1$location[j],pch=pch.ell[1], col=color.ell[1], cex=cex.ell[1])
            
            #text(myRes$location[i],myRes$location[j], paste("j=",j,"i=",i), cex=1.5)
            if (j==1) Axis(ell[,1],side=3)
@@ -73,13 +73,13 @@ for (j in 1:p)
            }
         
            if ((!is.null(est2))) {
-           points(ell2,type="l",col=color.ell[2], lty=lty.ell[2])
-           points(est2$location[i],est2$location[j],col=color.ell[2], pch=pch.ell[2])
+           points(ell2,type="l",col=color.ell[2], lty=lty.ell[2], lwd=lwd.ell[2])
+           points(est2$location[i],est2$location[j],col=color.ell[2], pch=pch.ell[2], cex=cex.ell[2])
            }
     
            if ((!is.null(est3))) {
-           points(ell3,type="l",col=color.ell[3], lty=lty.ell[3])
-           points(est3$location[i],est3$location[j],col=color.ell[3], pch=pch.ell[3])
+           points(ell3,type="l",col=color.ell[3], lty=lty.ell[3], lwd=lwd.ell[3])
+           points(est3$location[i],est3$location[j],col=color.ell[3], pch=pch.ell[3], cex=cex.ell[3])
            }
            }
            }

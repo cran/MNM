@@ -28,14 +28,14 @@ mv.2way.est(x, block, treatment, score = c("identity", "sign", "rank"),
   chapter 12 of the MNM book.}
 
 \value{
-  A list of length (\code{treatment}-1) with class 'mvcloc'.
-  The ith component of the previous list is a list with class 'mvloc'
+  A list of length c(c-1)/2 with class 'mvcloc' where c is the number of
+  treatments. Each component of the list is a list with class 'mvloc'
   containing the following components:
-  \item{location}{the treatment effect estimate when comparing the first
-  treatment to the (i+1)th treatment.}
-  \item{vcov}{the asymptotic covariance matrix of the treatment effect estimate.}
-  \item{est.name}{name of the treatment effect estimate.}
-  \item{dname}{name of data set for which the treatment effect estimate was computed.}
+  \item{location}{the adjusted treatment effect estimate when comparing the
+  treatment pair given in \code{dname}.}
+  \item{vcov}{the asymptotic covariance matrix of the adjusted treatment effect estimate.}
+  \item{est.name}{name of the adjusted treatment effect estimate.}
+  \item{dname}{the treatment pair for which the adjusted treatment effect estimate was computed.}
 }
 
 \references{\cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. } }

@@ -1,0 +1,14 @@
+LOG of the CHANGES in the package MNM
+
+Version 0.95-1
+
+* adding the ChangeLog file
+* fixing a bug in the computation of the covariance matrix in the function mv.2way.est
+* the function mv.2way.est returns now estimates of all pairwise comarisons and not as 
+  earlier compared only to the first group
+* the functions plotShape and plotMvloc for the arguments lwd.ell and cex.ell
+
+
+Version 0.95-0
+
+* released version on CRAN
