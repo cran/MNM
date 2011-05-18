@@ -57,7 +57,9 @@ mv.1sample.est(X, score = "identity", stand = "outer", maxiter = 100,
   
   # plotting
    
-  plotMvloc(est.Hot.X, est.SS.i.X, est.SR.i.X, X)
+  plot(est.Hot.X, est.SS.i.X, est.SR.i.X, X)
+  # or
+  plot(est.Hot.X, est.SS.i.X, est.SR.i.X)
 }
 \keyword{multivariate}
 \keyword{nonparametric}

@@ -29,8 +29,10 @@ function(X, score="identity", stand="outer", maxiter=100, eps=1e-6, na.action=na
                     r<-SpatialNP:::norm(sweep(X,2,location))
                     w.SIGNS<- SIGNS/sqrt(r)
                     r.sum<-sum(1/r)
-                    A<- (diag(r.sum,p)- t(w.SIGNS) %*% w.SIGNS)/n
-                    B<- t(SIGNS) %*% SIGNS / n
+                    #A<- (diag(r.sum,p)- t(w.SIGNS) %*% w.SIGNS)/n
+                    #B<- t(SIGNS) %*% SIGNS / n
+                    A<- (diag(r.sum,p)- crossprod(w.SIGNS))/n
+                    B<- crossprod(SIGNS) / n
                     A.inv<-solve(A)
                     scatter <- A.inv %*% B %*% A.inv/n
                     list(location=location, vcov=scatter, est.name= "spatial median")
@@ -48,8 +50,10 @@ function(X, score="identity", stand="outer", maxiter=100, eps=1e-6, na.action=na
                     r<-SpatialNP:::norm(X.inner)
                     w.SIGNS<- SIGNS/sqrt(r)
                     r.sum<-sum(1/r)
-                    A<- (diag(r.sum,p)- t(w.SIGNS) %*% w.SIGNS)/n
-                    B<- t(SIGNS) %*% SIGNS / n
+                    #A<- (diag(r.sum,p)- t(w.SIGNS) %*% w.SIGNS)/n
+                    #B<- t(SIGNS) %*% SIGNS / n
+                    A<- (diag(r.sum,p)- crossprod(w.SIGNS))/n
+                    B<- crossprod(SIGNS) / n
                     H.inv <- solve(H)
                     A.inv <- solve(A)
                     scatter <- H.inv %*% A.inv %*% B %*% A.inv %*% H.inv /n
@@ -69,8 +73,10 @@ function(X, score="identity", stand="outer", maxiter=100, eps=1e-6, na.action=na
                     r<-SpatialNP:::norm(Xsums)
                     w.Xsums<- Xsums/(r^1.5)
                     r.sum<-sum(1/r)
-                    A<- (diag(r.sum,p)- t(w.Xsums) %*% w.Xsums)/(length(r))
-                    B<- t(SIGNRANKS) %*% SIGNRANKS / n
+                    #A<- (diag(r.sum,p)- t(w.Xsums) %*% w.Xsums)/(length(r))
+                    #B<- t(SIGNRANKS) %*% SIGNRANKS / n
+                    A<- (diag(r.sum,p)- crossprod(w.Xsums))/(length(r))
+                    B<- crossprod(SIGNRANKS) / n
                     A.inv<-solve(A)
                     scatter <- A.inv %*% B %*% A.inv/n
                     res2<-list(location=location, vcov=scatter, est.name= "spatial Hodges-Lehmann estimator")
@@ -89,8 +95,10 @@ function(X, score="identity", stand="outer", maxiter=100, eps=1e-6, na.action=na
                     r<-SpatialNP:::norm(X.sums)
                     w.Xsums<- X.sums/(r^1.5)
                     r.sum<-sum(1/r)
-                    A<- (diag(r.sum,p)- t(w.Xsums) %*% w.Xsums)/(length(r))
-                    B<- t(SIGNRANKS) %*% SIGNRANKS / n
+                    #A<- (diag(r.sum,p)- t(w.Xsums) %*% w.Xsums)/(length(r))
+                    #B<- t(SIGNRANKS) %*% SIGNRANKS / n
+                    A<- (diag(r.sum,p)- crossprod(w.Xsums))/(length(r))
+                    B<- crossprod(SIGNRANKS) / n
                     A.inv<-solve(A)
                     H.inv <- solve(H)
                     scatter <- H.inv %*% A.inv %*% B %*% A.inv %*% H.inv /n

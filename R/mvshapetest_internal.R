@@ -18,7 +18,7 @@ SSCov.test <- function(X, n, p)
     TCOV <- SSCov(X)
     vTCOV <- as.vector(TCOV)
     cross <- SpatialNP:::Q2internal(X)
-    cov.cTCOV <- 4 * (matrix(cross[-(1:p^2)], ncol = p^2) -  (vTCOV %*% t(vTCOV))) /n
+    cov.cTCOV <- 4 * (matrix(cross[-(1:p^2)], ncol = p^2) -  tcrossprod(vTCOV)) /n
     test.statistic <- as.vector(t(cpp %*% vTCOV) %*% SpatialNP:::gen.inv(cov.cTCOV) %*% (cpp %*% vTCOV))
     names(test.statistic) <- "Q2"
     df <- (p+2)*(p-1)/2
@@ -31,7 +31,7 @@ SSCov.test <- function(X, n, p)
 SCov.test <- function(X,location, n, p)
     {
     if (location=="est") T <- spatial.sign(X,center=TRUE,shape=FALSE) else T <- spatial.sign(X,center=FALSE,shape=FALSE)
-    vSCOV <- as.vector(t(T) %*% T/n)
+    vSCOV <- as.vector(crossprod(T)/n)
     cpp<- SpatialNP:::Cpp(p)
     Tau <- (2 / (p*(p+2))) 
     Q2 <- sum((cpp %*% vSCOV)^2)

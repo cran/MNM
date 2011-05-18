@@ -2,8 +2,8 @@ Package: MNM
 Type: Package
 Title: Multivariate Nonparametric Methods. An Approach Based on Spatial
         Signs and Ranks
-Version: 0.95-1
-Date: 2009-12-11
+Version: 0.95-2
+Date: 2011-05-18
 Author: Klaus Nordhausen, Jyrki Mottonen, Hannu Oja
 Maintainer: Klaus Nordhausen <klaus.nordhausen@uta.fi>
 Depends: R (>= 2.9.2), ellipse, ICS, ICSNP, SpatialNP, mvtnorm, survey
@@ -16,6 +16,6 @@ Description: The package provides multivariate tests, estimates and
 License: GPL (>= 2)
 LazyLoad: yes
 Encoding: latin1
-Packaged: 2009-12-11 15:16:07 UTC; kn66583
+Packaged: 2011-05-18 17:14:49 UTC; klaus
 Repository: CRAN
-Date/Publication: 2009-12-11 18:07:24
+Date/Publication: 2011-05-18 18:23:51

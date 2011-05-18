@@ -45,8 +45,9 @@
     {
       iter<-iter+1
       sqrtG<-SpatialNP:::mat.sqrt(G)               
-      z <- x%*%t(solve(sqrtG))
-
+      #z <- x%*%t(solve(sqrtG))
+      z <- tcrossprod(x, syminv(sqrtG))
+        
       #Subtract blockwise spatial means from the blocks
       mx<-by(z,block,spatial.median)
       mx<-matrix(unlist(mx),ncol=d,byrow=T)
@@ -102,7 +103,8 @@
     {
       iter<-iter+1
       sqrtG<-SpatialNP:::mat.sqrt(G)
-      xg<-x%*%t(solve(sqrtG))
+      #xg<-x%*%t(solve(sqrtG))
+      xg<-tcrossprod(x, syminv(sqrtG))
       for(i in 1:n)
         {
           rx[block==levels(block)[i],]<-
@@ -139,8 +141,9 @@
   z<-x-mx[block,]
 
   #Calculate the value of the test statistic
-  C <- (1/N)*crossprod(z,z)
-  invC <- solve(C)
+  C <- (1/N)*crossprod(z)
+  #invC <- solve(C)
+  invC <- syminv(C)
   rdotj<-by(z,treatment,colSums)
   rcr<-sapply(rdotj, MNM:::my.quad.from, B.inv = invC, simplify = T)
   w0 <- ((k-1)/(n*k))*sum(rcr)
@@ -211,8 +214,9 @@
          )
 
   #Calculate the value of the test statistic
-  Cs <- (1/N)*crossprod(sx,sx)
-  invCs <- solve(Cs)  
+  Cs <- (1/N)*crossprod(sx)
+  #invCs <- solve(Cs)  
+  invCs <- syminv(Cs)  
   rdotj<-by(sx,treatment,colSums)
   rcr<-sapply(rdotj, MNM:::my.quad.from, B.inv = invCs, simplify = T)
   w0 <- ((k-1)/(n*k))*sum(rcr)
@@ -283,8 +287,9 @@
          )
   
   #Calculate the value of the test statistic
-  Cr <- (1/N)*crossprod(rx,rx)
-  invCr <- solve(Cr)  
+  Cr <- (1/N)*crossprod(rx)
+  # invCr <- solve(Cr)
+  invCr <- syminv(Cr)  
   rdotj<-by(rx,treatment,colSums)
   rcr<-sapply(rdotj, MNM:::my.quad.from, B.inv = invCr, simplify = T)
   w0 <- ((k-1)/(n*k))*sum(rcr)

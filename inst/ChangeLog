@@ -1,5 +1,10 @@
 LOG of the CHANGES in the package MNM
 
+Version 0.95-2
+
+* making plotMVloc also as e method for objects of class mvloc
+* many changes in linear algebra part of the code by using now often the Cholesky decomposition
+
 Version 0.95-1
 
 * adding the ChangeLog file

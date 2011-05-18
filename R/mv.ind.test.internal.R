@@ -1,6 +1,13 @@
 iind<-function(X,Y,method,n.simu,n, p.X, p.Y)
     {
-    W.star <- sum(diag(solve(cov(X)) %*% cov(X,Y) %*% solve(cov(Y)) %*% cov(Y,X)))
+    # W.star <- sum(diag(solve(cov(X)) %*%  %*% solve(cov(Y)) %*% cov(Y,X)))
+    covXY <- cov(X,Y)
+    ch.X <- chol(cov(X))
+    ch.Y <- chol(cov(Y))
+    p1 <- backsolve(ch.X, forwardsolve(ch.X, covXY))
+    p2 <- backsolve(ch.Y, forwardsolve(ch.Y, t(covXY)))
+    W.star <- sum(diag(p1 %*% p2))
+    
     STATISTIC <- n*W.star
     
     names(STATISTIC) <- "Q.2"
@@ -16,15 +23,17 @@ iind<-function(X,Y,method,n.simu,n, p.X, p.Y)
                         list(statistic=STATISTIC,p.value=as.numeric(PVAL),method=METHOD,parameter=PARAMETER)}
      ,
      "permutation" = {
-                    W.star.simu<-function(X,Y,index) 
+                    W.star.simu<-function(X,Y,index, covXi = syminv(cov(X)), covYi= syminv(cov(Y))) 
                         {
-                        covXi <- solve(cov(X))
-                        covYi <- solve(cov(Y))
+                        # covXi <- syminv(cov(X))
+                        # covYi <- syminv(cov(Y))
                         covXY <- cov(X,Y[index,])
                         sum( diag( covXi %*% covXY %*% covYi %*% t(covXY)))
                         }
                     
-                    statistics <- replicate (n.simu, W.star.simu(X,Y,sample(1:n)))
+                    covXi = syminv(cov(X))
+                    covYi = syminv(cov(Y))
+                    statistics <- replicate (n.simu, W.star.simu(X,Y,sample(1:n), covXi=covXi, covYi=covYi))
                     PVAL<-mean(statistics>W.star)
                     PARAMETER <- n.simu
                     names(PARAMETER)<-"replications"

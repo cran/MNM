@@ -16,7 +16,8 @@
   N <- dim(x)[1]
 
   #Calculate the asymptotic covariance matrix of the location estimates
-  S<-(2/(n*N))*t(x)%*%x
+  #S<-(2/(n*N))*t(x)%*%x
+  S<-(2/(n*N))*crossprod(x)
 
   #Calculate the treatment difference estimates
   res<-vector("list", k*(k-1)/2)
@@ -61,7 +62,8 @@
          {
            METHOD <- "affine equivariant treatment difference estimate (sign score)"
            sqrtG<-inner.sign(x=x,block=block,eps=eps,maxiter=maxiter)$sqrtG
-           z <- x%*%t(solve(sqrtG))    
+           #z <- x%*%t(solve(sqrtG))
+           z <- tcrossprod(x,solve(sqrtG))    
            for(i in 1:(k-1)){
              for(j in (i+1):k){
                diff<-z[treatment==levels(treatment)[j],]-
@@ -142,7 +144,8 @@
            rnk<-inner.rank(x=x,block=block,eps=eps,maxiter=maxiter)
            rx<-rnk$rx
            sqrtG<-rnk$sqrtG
-           z <- x%*%t(solve(sqrtG))    
+           #z <- x%*%t(solve(sqrtG))  
+           z <- tcrossprod(x, solve(sqrtG))    
            for(i in 1:(k-1)){
              for(j in (i+1):k){
                diff<-z[treatment==levels(treatment)[j],]-
@@ -170,7 +173,8 @@
          )
 
   #Calculate the asymptotic covariance matrix of the location estimates
-  B<-(1/N)*t(rx)%*%rx
+  #B<-(1/N)*t(rx)%*%rx
+  B<-(1/N)*crossprod(rx)
   A<-matrix(0,d,d)
   for(i in 1:(k-1)){
     for(j in (i+1):k){

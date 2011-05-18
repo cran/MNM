@@ -34,7 +34,7 @@ function(X, center=TRUE, shape=TRUE, eps.S=1e-5, na.action=na.fail,...)
 
      else if(is.numeric(shape))
      # center needs to be set:
-      if (center) center<-ICSNP:::mat.sqrt(shape)%*%spatial.median(X%*%solve(ICSNP:::mat.sqrt(shape)),...)
+      if (center) center<-ICSNP:::mat.sqrt(shape)%*%spatial.median(X%*% syminv(ICSNP:::mat.sqrt(shape)),...)
       else center<-rep(0,p)
  
      else 
@@ -63,7 +63,7 @@ function(X, center=TRUE, shape=TRUE, eps.S=1e-5, na.action=na.fail,...)
       }
     }
 
-    y<-sweep(X,2,center)%*%solve(ICSNP:::mat.sqrt(shape))
+    y<-sweep(X,2,center)%*%syminv(ICSNP:::mat.sqrt(shape))
     y.norm <- ICSNP:::norm(y) 
     spatial.signs<-sweep(y,1,y.norm,"/")
     ind.eps.S <- which(y.norm <= eps.S)

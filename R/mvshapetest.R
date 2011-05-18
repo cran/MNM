@@ -14,7 +14,7 @@ mv.shape.test <- function(X,score="identity", location="est", na.action=na.fail,
     p<-dim(X)[2]
     
     #if(stand=="inner") stop('Sorry, only estimate="outer" is possible')
-    if(score=="rank") stop('Sorry, only score="rank" is not implemented')
+    if(score=="rank") stop('Sorry, score="rank" is not implemented')
     
     res1<-switch(score,
         "identity"={

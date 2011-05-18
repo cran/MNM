@@ -11,8 +11,9 @@ hot.csample<-function(X,g,method,n.simu,...)
  
  Ts<-sweep(X,2,mean.total,"-")
 
- B<-crossprod(Ts,Ts)/n
- B.inv<-solve(B)
+ B<-crossprod(Ts)/n
+ #B.inv<-solve(B)
+ B.inv<-syminv(B)
  n.g<-by(g,g,length)
  
  T.g<-by(Ts,g,colMeans)
@@ -64,8 +65,9 @@ CssTestOuter <- function(X,g,method,n.simu,...)
     
     Ts<-spatial.sign(X,center=TRUE, shape=FALSE,...)
     
-    B<-crossprod(Ts,Ts)/n
-    B.inv<-solve(B)
+    B<-crossprod(Ts)/n
+    #B.inv<-solve(B)
+    B.inv<-syminv(B)
     n.g<-by(g,g,length)
  
     T.g<-by(Ts,g,colMeans)
@@ -103,8 +105,9 @@ CssTestOuter <- function(X,g,method,n.simu,...)
     
     Ts<-spatial.rank(X, shape=FALSE,...)
     
-    B<-crossprod(Ts,Ts)/n
-    B.inv<-solve(B)
+    B<-crossprod(Ts)/n
+    #B.inv<-solve(B)
+    B.inv<-syminv(B)
     n.g<-by(g,g,length)
  
     T.g<-by(Ts,g,colMeans)

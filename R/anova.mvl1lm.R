@@ -32,14 +32,17 @@ anova.mvl1lm <- function(object, object2=NULL, test = "Score", ...)
                         X.2 <- subset(M.full,select = M.full.names[!(M.full.names %in% M.nest.names)]) 
                         X.1 <- subset(M.full,select = M.full.names[(M.full.names %in% M.nest.names)]) 
                         Y.hat <- object2$residuals
-                        P.X.1 <- X.1 %*% solve(crossprod(X.1)) %*% t(X.1)
+                        ch.XX.1 <- chol(crossprod(X.1))
+                        P.X.1 <- X.1 %*% backsolve(ch.XX.1, forwardsolve(ch.XX.1, t(X.1), upper=TRUE, trans=TRUE)) #X.1 %*% solve(crossprod(X.1)) %*% t(X.1)
                         X.2.hat <- crossprod((diag(1,n) - P.X.1), X.2)
-                        P.X.2.hat <- X.2.hat %*% solve(crossprod(X.2.hat)) %*% t(X.2.hat)
+                        ch.XX.2.hat <- chol(crossprod(X.2.hat))
+                        P.X.2.hat <- X.2.hat %*% backsolve(ch.XX.2.hat, forwardsolve(ch.XX.2.hat, t(X.2.hat), upper=TRUE, trans=TRUE)) #X.2.hat %*% solve(crossprod(X.2.hat)) %*% t(X.2.hat)
                         q.2 <- dim(X.2)[2]
                         method <- "Score type test that coefficients not in the restricted model are 0:"
                         switch(T.scores,
                           "identity" = {
-                              Q.2 <- n * sum(diag(crossprod(Y.hat,P.X.2.hat) %*% Y.hat %*% solve(crossprod(Y.hat))))
+                              # Q.2 <- n * sum(diag(crossprod(Y.hat,P.X.2.hat) %*% Y.hat %*% solve(crossprod(Y.hat))))
+                               Q.2 <- n * sum(diag(crossprod(Y.hat,P.X.2.hat) %*% tcrossprod(Y.hat,syminv(crossprod(Y.hat)))))
                               dfs <- p*q.2
                               p.value <- 1 - pchisq(Q.2, df = dfs)
                               },
@@ -47,13 +50,15 @@ anova.mvl1lm <- function(object, object2=NULL, test = "Score", ...)
                               switch(object$stand,
                                     "outer"={
                                             U.hat <- spatial.sign(Y.hat, center=FALSE, shape=FALSE)
-                                            Q.2 <- n * sum(diag(crossprod(U.hat,P.X.2.hat) %*% U.hat %*% solve(crossprod(U.hat))))
+                                            # Q.2 <- n * sum(diag(crossprod(U.hat,P.X.2.hat) %*% U.hat %*% solve(crossprod(U.hat))))
+                                            Q.2 <- n * sum(diag(crossprod(U.hat,P.X.2.hat) %*% tcrossprod(U.hat, syminv(crossprod(U.hat)))))
                                             dfs <- p*q.2
                                             p.value <- 1 - pchisq(Q.2, df = dfs)
                                             },
                                     "inner"={
                                             U.hat <- spatial.sign(Y.hat, center=FALSE, shape=object2$S.mat)
-                                            Q.2 <- n * sum(diag(crossprod(U.hat,P.X.2.hat) %*% U.hat %*% solve(crossprod(U.hat))))
+                                            # Q.2 <- n * sum(diag(crossprod(U.hat,P.X.2.hat) %*% U.hat %*% solve(crossprod(U.hat))))
+                                            Q.2 <- n * sum(diag(crossprod(U.hat,P.X.2.hat) %*% tcrossprod(U.hat, syminv(crossprod(U.hat)))))
                                             dfs <- p*q.2
                                             p.value <- 1 - pchisq(Q.2, df = dfs)
                                     }
@@ -65,13 +70,15 @@ anova.mvl1lm <- function(object, object2=NULL, test = "Score", ...)
                               switch(object$stand,
                                     "outer"={
                                             R.hat <- spatial.rank(Y.hat, center=FALSE, shape=FALSE)
-                                            Q.2 <- n * sum(diag(crossprod(R.hat,P.X.2.hat) %*% R.hat %*% solve(crossprod(R.hat))))
+                                            # Q.2 <- n * sum(diag(crossprod(R.hat,P.X.2.hat) %*% R.hat %*% solve(crossprod(R.hat))))
+                                            Q.2 <- n * sum(diag(crossprod(R.hat,P.X.2.hat) %*% tcrossprod(R.hat, syminv(crossprod(R.hat)))))
                                             dfs <- p*q.2
                                             p.value <- 1 - pchisq(Q.2, df = dfs)
                                             },
                                     "inner"={
                                             R.hat <- spatial.rank(Y.hat, center=FALSE, shape=object2$S.mat)
-                                            Q.2 <- n * sum(diag(crossprod(R.hat,P.X.2.hat) %*% R.hat %*% solve(crossprod(R.hat))))
+                                            # Q.2 <- n * sum(diag(crossprod(R.hat,P.X.2.hat) %*% R.hat %*% solve(crossprod(R.hat))))
+                                            Q.2 <- n * sum(diag(crossprod(R.hat,P.X.2.hat) %*% tcrossprod(R.hat, syminv(crossprod(R.hat)))))
                                             dfs <- p*q.2
                                             p.value <- 1 - pchisq(Q.2, df = dfs)
                                     
@@ -104,7 +111,9 @@ anova.mvl1lm <- function(object, object2=NULL, test = "Score", ...)
                         #if (!all(vcov.nest.names %in% vcov.full.names)) stop("'object2' is not nested in 'object'") 
                         ind.V <- which( !(vcov.full.names %in% vcov.nest.names))
                         vcov.diff <- vcov.full[ind.V, ind.V]
-                        Q.2 <- as.numeric(beta.diff %*% solve(vcov.diff) %*% beta.diff)
+                        # Q.2 <- as.numeric(beta.diff %*% solve(vcov.diff) %*% beta.diff)
+                        ch.vcov.diff <- chol(vcov.diff)
+                        Q.2 <- as.numeric(beta.diff %*% backsolve(ch.vcov.diff, forwardsolve(ch.vcov.diff, beta.diff, upper=TRUE, trans=TRUE)))
                         dfs <- length(beta.diff)
                         p.value <- 1 - pchisq(Q.2, df = dfs)
                         }
