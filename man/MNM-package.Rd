@@ -12,8 +12,8 @@ linear regression and principal components.
 \tabular{ll}{
 Package: \tab MNM\cr
 Type: \tab Package\cr
-Version: \tab 0.95-2\cr
-Date: \tab 2011-05-18\cr
+Version: \tab 0.95-3\cr
+Date: \tab 2011-06-12\cr
 License: \tab GPL (>= 2)\cr
 }
 

@@ -33,10 +33,10 @@ anova.mvl1lm <- function(object, object2=NULL, test = "Score", ...)
                         X.1 <- subset(M.full,select = M.full.names[(M.full.names %in% M.nest.names)]) 
                         Y.hat <- object2$residuals
                         ch.XX.1 <- chol(crossprod(X.1))
-                        P.X.1 <- X.1 %*% backsolve(ch.XX.1, forwardsolve(ch.XX.1, t(X.1), upper=TRUE, trans=TRUE)) #X.1 %*% solve(crossprod(X.1)) %*% t(X.1)
+                        P.X.1 <- X.1 %*% backsolve(ch.XX.1, forwardsolve(ch.XX.1, t(X.1), upper.tri=TRUE, transpose=TRUE)) #X.1 %*% solve(crossprod(X.1)) %*% t(X.1)
                         X.2.hat <- crossprod((diag(1,n) - P.X.1), X.2)
                         ch.XX.2.hat <- chol(crossprod(X.2.hat))
-                        P.X.2.hat <- X.2.hat %*% backsolve(ch.XX.2.hat, forwardsolve(ch.XX.2.hat, t(X.2.hat), upper=TRUE, trans=TRUE)) #X.2.hat %*% solve(crossprod(X.2.hat)) %*% t(X.2.hat)
+                        P.X.2.hat <- X.2.hat %*% backsolve(ch.XX.2.hat, forwardsolve(ch.XX.2.hat, t(X.2.hat), upper.tri=TRUE, transpose=TRUE)) #X.2.hat %*% solve(crossprod(X.2.hat)) %*% t(X.2.hat)
                         q.2 <- dim(X.2)[2]
                         method <- "Score type test that coefficients not in the restricted model are 0:"
                         switch(T.scores,
@@ -113,7 +113,7 @@ anova.mvl1lm <- function(object, object2=NULL, test = "Score", ...)
                         vcov.diff <- vcov.full[ind.V, ind.V]
                         # Q.2 <- as.numeric(beta.diff %*% solve(vcov.diff) %*% beta.diff)
                         ch.vcov.diff <- chol(vcov.diff)
-                        Q.2 <- as.numeric(beta.diff %*% backsolve(ch.vcov.diff, forwardsolve(ch.vcov.diff, beta.diff, upper=TRUE, trans=TRUE)))
+                        Q.2 <- as.numeric(beta.diff %*% backsolve(ch.vcov.diff, forwardsolve(ch.vcov.diff, beta.diff, upper.tri=TRUE, transpose=TRUE)))
                         dfs <- length(beta.diff)
                         p.value <- 1 - pchisq(Q.2, df = dfs)
                         }

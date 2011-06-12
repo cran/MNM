@@ -1,9 +1,13 @@
 LOG of the CHANGES in the package MNM
 
+Version 0.95-3
+
+* avoiding some partial argument matching issues when using forwardsolve
+
 Version 0.95-2
 
-* making plotMVloc also as e method for objects of class mvloc
-* many changes in linear algebra part of the code by using now often the Cholesky decomposition
+* making plotMVloc also as a method for objects of class mvloc
+* many changes in the linear algebra part of the code by using now often the Cholesky decomposition
 
 Version 0.95-1
 

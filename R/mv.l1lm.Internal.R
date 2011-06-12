@@ -14,7 +14,7 @@ d <- dim(X)[2]
 dfs <- p*d
 D.mat <- crossprod(X)
 ch.D <- chol(D.mat)
-betas <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X,Y), upper=TRUE, trans=TRUE))
+betas <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X,Y), upper.tri=TRUE, transpose=TRUE))
 colnames(betas)<- colnames(Y)
 rownames(betas)<- colnames(X)
 fits <-  tcrossprod(X,t(betas))
@@ -24,7 +24,7 @@ D.mat.inv <- chol2inv(ch.D)
 colnames(D.mat.inv) <- colnames(X)
 rownames(D.mat.inv) <- colnames(X)
 Bcov <- kronecker(Sigma, D.mat.inv, make.dimnames = TRUE)
-P.X <- X %*% backsolve(ch.D, forwardsolve(ch.D, t(X), upper=TRUE, trans=TRUE))
+P.X <- X %*% backsolve(ch.D, forwardsolve(ch.D, t(X), upper.tri=TRUE, transpose=TRUE))
 Q.2 <- n * sum(diag(crossprod(Y,P.X) %*% Y %*% syminv(crossprod(Y))))
 p.value <- 1 - pchisq(Q.2,df=dfs)
 method <- "Multivariate regression using identiy scores"
@@ -50,7 +50,7 @@ differ <- Inf
 iter <- 0
 D.mat <- crossprod(X)
 ch.D <- chol(D.mat)
-B.init <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X,Y), upper=TRUE, trans=TRUE))
+B.init <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X,Y), upper.tri=TRUE, transpose=TRUE))
 S.init <- crossprod(Y-tcrossprod(X,t(B.init)))/n
 
 while(differ>eps)
@@ -73,7 +73,7 @@ while(differ>eps)
         XEXE <- crossprod(X.E)/n
         ch.XEXE <- chol(XEXE)
         # B.new <- B.init + solve(crossprod(X.E)/n) %*% (crossprod(X, E.sign)/n) %*% S.sqrt
-        B.new <-  B.init + backsolve(ch.XEXE, forwardsolve(ch.XEXE, XEsSs, upper=TRUE, trans=TRUE)) 
+        B.new <-  B.init + backsolve(ch.XEXE, forwardsolve(ch.XEXE, XEsSs, upper.tri=TRUE, transpose=TRUE)) 
         S.new <-  p/n * S.sqrt %*% crossprod(E.sign) %*% S.sqrt
         iter <- iter + 1
         differ <- sqrt((sum((B.new-B.init)^2)))
@@ -114,7 +114,7 @@ colnames(D.mat.inv) <- colnames(X)
 rownames(D.mat.inv) <- colnames(X)
 Bcov <- kronecker((S.sqrt %*% A.inv %*% B %*% A.inv %*% S.sqrt),  D.mat.inv, make.dimnames = TRUE)
 
-P.X <- X %*% backsolve(ch.D, forwardsolve(ch.D, t(X), upper=TRUE, trans=TRUE))
+P.X <- X %*% backsolve(ch.D, forwardsolve(ch.D, t(X), upper.tri=TRUE, transpose=TRUE))
 Signs.0 <- spatial.sign(Y, center=FALSE, shape=TRUE)
 Q.2 <- p * sum(diag(crossprod(Signs.0,P.X) %*% Signs.0 ))
 p.value <- 1 - pchisq(Q.2,df=dfs)
@@ -142,7 +142,7 @@ differ <- Inf
 iter <- 0
 D.mat <- crossprod(X)
 ch.D <- chol(D.mat)
-B.init <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X,Y), upper=TRUE, trans=TRUE))
+B.init <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X,Y), upper.tri=TRUE, transpose=TRUE))
 n <- dim(X)[1]
 p <- dim(Y)[2]
 d <- dim(X)[2]
@@ -164,7 +164,7 @@ while(differ>eps)
         XEs <- crossprod(X, E.sign)/n 
         XEXE <- crossprod(X.E)/n
         ch.XEXE <- chol(XEXE)
-        B.new <-  B.init + backsolve(ch.XEXE, forwardsolve(ch.XEXE, XEs, upper=TRUE, trans=TRUE)) 
+        B.new <-  B.init + backsolve(ch.XEXE, forwardsolve(ch.XEXE, XEs, upper.tri=TRUE, transpose=TRUE)) 
         iter <- iter + 1
         differ <- sqrt((sum((B.new-B.init)^2)))
         B.init <- B.new
@@ -200,7 +200,7 @@ D.mat.inv <- chol2inv(ch.D)
 colnames(D.mat.inv) <- colnames(X)
 rownames(D.mat.inv) <- colnames(X)
 Bcov <- kronecker(ABA,  D.mat.inv, make.dimnames = TRUE)
-P.X <- X %*% backsolve(ch.D, forwardsolve(ch.D, t(X), upper=TRUE, trans=TRUE))
+P.X <- X %*% backsolve(ch.D, forwardsolve(ch.D, t(X), upper.tri=TRUE, transpose=TRUE))
 Signs.0 <- spatial.sign(Y, center=FALSE, shape=FALSE)
 Q.2 <- n * sum(diag(crossprod(Signs.0,P.X) %*% Signs.0 %*% syminv(crossprod(Signs.0))))
 p.value <- 1 - pchisq(Q.2,df=dfs)
@@ -245,7 +245,7 @@ n <- dim(X2)[1]
 
 D.mat <- crossprod(X2)
 ch.D <- chol(D.mat)
-B.init <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X2,Y2), upper=TRUE, trans=TRUE))
+B.init <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X2,Y2), upper.tri=TRUE, transpose=TRUE))
 S.init <- crossprod(Y-tcrossprod(X,t(B.init)))/n
 
 while(differ>eps)
@@ -265,7 +265,7 @@ while(differ>eps)
         X2Es <- (crossprod(X2, E.sign)/n) %*% S.sqrt
         X2EX2E <- crossprod(X2.E)/n
         ch.X2EX2E <- chol(X2EX2E)
-        B.new <-  B.init + backsolve(ch.X2EX2E, forwardsolve(ch.X2EX2E, X2Es, upper=TRUE, trans=TRUE)) 
+        B.new <-  B.init + backsolve(ch.X2EX2E, forwardsolve(ch.X2EX2E, X2Es, upper.tri=TRUE, transpose=TRUE)) 
         #B.new <-  B.init + solve(crossprod(X2.E)/n) %*% (crossprod(X2, E.sign)/n) %*% S.sqrt
         S.rank <- spatial.rank((Y - X %*% B.new) %*% S.sqrt.inv, shape=FALSE)
         S.new <-  p/n1 * S.sqrt %*% crossprod(S.rank) %*% S.sqrt
@@ -332,7 +332,7 @@ rownames(B.init) <-colnames(X)
 
 
 #P.X.c <- X.c %*% solve(crossprod(X.c)) %*% t(X.c)
-P.X.c <- X.c %*% backsolve(ch.D, forwardsolve(ch.D, t(X.c), upper=TRUE, trans=TRUE))
+P.X.c <- X.c %*% backsolve(ch.D, forwardsolve(ch.D, t(X.c), upper.tri=TRUE, transpose=TRUE))
 Ranks.0 <- spatial.rank(Y, shape=TRUE)
 Q.2 <- n1 * p * ( sum(rowSums((P.X.c %*% Ranks.0 )^2))) /  sum(rowSums(Ranks.0^2))
 p.value <- 1 - pchisq(Q.2,df=dfs)
@@ -381,7 +381,7 @@ n <- dim(X2)[1]
 
 D.mat<-crossprod(X2)
 ch.D <- chol(D.mat)
-B.init <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X2,Y2), upper=TRUE, trans=TRUE))
+B.init <- backsolve(ch.D, forwardsolve(ch.D, crossprod(X2,Y2), upper.tri=TRUE, transpose=TRUE))
 #B.init <- solve(crossprod(X2), crossprod(X2, Y2))
 
 while(differ>eps)
@@ -399,7 +399,7 @@ while(differ>eps)
         X2Es <- crossprod(X2, E.sign)/n
         X2EX2E <- crossprod(X2.E)/n
         ch.X2EX2E <- chol(X2EX2E)
-        B.new <-  B.init + backsolve(ch.X2EX2E, forwardsolve(ch.X2EX2E, X2Es, upper=TRUE, trans=TRUE))
+        B.new <-  B.init + backsolve(ch.X2EX2E, forwardsolve(ch.X2EX2E, X2Es, upper.tri=TRUE, transpose=TRUE))
         #B.new <-  B.init + solve(crossprod(X2.E)/n) %*% (crossprod(X2, E.sign)/n)
         iter <- iter + 1
         differ <- sqrt((sum((B.new-B.init)^2)))
@@ -456,7 +456,7 @@ colnames(B.init) <-colnames(Y)
 rownames(B.init) <-colnames(X)
 
 #P.X.c <- X.c %*% solve(crossprod(X.c)) %*% t(X.c)
-P.X.c <- X.c %*% backsolve(ch.D, forwardsolve(ch.D, t(X.c), upper=TRUE, trans=TRUE))
+P.X.c <- X.c %*% backsolve(ch.D, forwardsolve(ch.D, t(X.c), upper.tri=TRUE, transpose=TRUE))
 Ranks.0 <- spatial.rank(Y, shape=FALSE)
 Q.2 <- n1 * sum(diag(crossprod(Ranks.0,P.X.c) %*% Ranks.0 %*% syminv(crossprod(Ranks.0))))
 p.value <- 1 - pchisq(Q.2,df=dfs)
