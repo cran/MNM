@@ -1,5 +1,9 @@
 LOG of the CHANGES in the package MNM
 
+Version 1.0-0
+
+Updating some references and modifying the citation of the package
+
 Version 0.95-3
 
 * avoiding some partial argument matching issues when using forwardsolve

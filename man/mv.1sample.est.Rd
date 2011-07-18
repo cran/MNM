@@ -37,7 +37,9 @@ mv.1sample.est(X, score = "identity", stand = "outer", maxiter = 100,
   \item{dname}{name of the data set.}
 }
 
-\references{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. }
+\references{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. 
+
+\cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}}
 \author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
 
 

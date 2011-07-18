@@ -35,7 +35,10 @@ mv.2sample.est(X, g, score = "identity", stand = "outer",
   \item{est.name}{name of the location estimate.}
   \item{dname}{name of data set for which the location was computed.}
 }
-\references{\cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. } } 
+\references{\cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. } 
+
+\cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}
+} 
 
 \author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
 

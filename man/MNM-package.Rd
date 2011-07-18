@@ -12,8 +12,8 @@ linear regression and principal components.
 \tabular{ll}{
 Package: \tab MNM\cr
 Type: \tab Package\cr
-Version: \tab 0.95-3\cr
-Date: \tab 2011-06-12\cr
+Version: \tab 1.0-0\cr
+Date: \tab 2011-07-18\cr
 License: \tab GPL (>= 2)\cr
 }
 
@@ -22,6 +22,8 @@ The methods implemented here are mainly described in Oja (2010) and the package 
 }
 \references{
 \cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R. An Approach Based on Spatial Signs and Ranks}, Springer. } 
+
+\cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}
 }
 \author{
 Klaus Nordhausen, Jyrki \enc{Möttönen}{Mottonen} and Hannu Oja
@@ -31,3 +33,4 @@ Maintainer: Klaus Nordhausen, \email{klaus.nordhausen@uta.fi}
 }
 
 \keyword{package }
+

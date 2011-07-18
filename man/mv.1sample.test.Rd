@@ -39,7 +39,10 @@ mv.1sample.test(X, mu = 0, score = "identity", stand = "outer",
   \item{method}{a character string indicating what type of test was performed.}
   \item{data.name}{a character string giving the name of the data set.}
 }
-\references{\cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. } } 
+\references{\cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. }
+
+\cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}
+ } 
 
 \author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
 
