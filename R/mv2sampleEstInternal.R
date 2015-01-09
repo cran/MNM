@@ -40,9 +40,9 @@ Hsign<-function(X1, X2, eps = 1e-06, maxiter = 500, ...)
     while (differ>eps)
         {
         if (maxiter<= iter) stop("'maxiter' reached without convergence") 
-        C.sqrt<-SpatialNP:::mat.sqrt(C)
-        C.inv<-solve(C)
-        C.inv.sqrt<-SpatialNP:::mat.sqrt(C.inv)
+        C.sqrt <- mat.sqrt(C)
+        C.inv <- solve(C)
+        C.inv.sqrt <- mat.sqrt(C.inv)
     
         Y1 <- X1 %*% C.inv.sqrt
         Y2 <- X2 %*% C.inv.sqrt
@@ -62,7 +62,7 @@ Hsign<-function(X1, X2, eps = 1e-06, maxiter = 500, ...)
         B<-(1/(n1+n2))*(B1+B2)
     
         C.new <- p * C.sqrt %*% B %*% C.sqrt
-        differ<-ICS:::frobenius.norm(C.new-C)
+        differ<-frobenius.norm(C.new-C)
         C<-C.new
         iter<-iter+1
         }
@@ -85,7 +85,7 @@ Hrank<-function(X1, X2, eps = 1e-06, maxiter = 500, ...)
     while (differ>eps)
         {
         if (maxiter<= iter) stop("'maxiter' reached without convergence") 
-        C.sqrt<-SpatialNP:::mat.sqrt(C.mat)
+        C.sqrt <- mat.sqrt(C.mat)
         C.inv.sqrt<-solve(C.sqrt)
     
         Y1 <- X1 %*% C.inv.sqrt
@@ -107,7 +107,7 @@ Hrank<-function(X1, X2, eps = 1e-06, maxiter = 500, ...)
         C.new <- C.sqrt %*% B %*% C.sqrt
         C.new <- p * 1/sum(diag(C.new)) * C.new
         
-        differ<-ICS:::frobenius.norm(C.new-C.mat)
+        differ<-frobenius.norm(C.new-C.mat)
         C.mat<-C.new
         iter<-iter+1
         }
@@ -150,7 +150,7 @@ sign.est.inner<-function(X1, X2, p, n1, n2, maxiter, eps,...){
                     center.X2<-attr(SIGNS.X2,"center")
                     location<- center.X1-center.X2
                     C.inv<-solve(C)
-                    H<- SpatialNP:::mat.sqrt(C.inv)
+                    H<- mat.sqrt(C.inv)
                     X1.inner <- sweep(X1,2,center.X1) %*% H
                     X2.inner <- sweep(X2,2,center.X2) %*% H
                     attr(SIGNS.X1,"center")<-NULL
@@ -201,7 +201,7 @@ rank.est.inner<-function(X1, X2, p, n1, n2, maxiter, eps, ...)
                     n<-n1+n2
                     C.mat <- Hrank(X1, X2, maxiter=maxiter, eps=eps)
                     C.inv<-solve(C.mat)
-                    H<- SpatialNP:::mat.sqrt(C.inv)
+                    H<- mat.sqrt(C.inv)
                     H.inv <- solve(H)
                     
                     

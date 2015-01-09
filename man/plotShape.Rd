@@ -53,7 +53,7 @@ plotShape(est1, est2 = NULL, est3 = NULL, X = NULL, alim = NULL,
 \value{
   A scatter plot matrix.
 }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \seealso{ \code{\link[ellipse]{ellipse}},  \code{\link{plotMvloc}}}
 

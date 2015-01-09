@@ -119,8 +119,8 @@ symmsind.inner <- function(X, Y, method, n.simu, n, p.X, p.Y, p)
     {
     Rcov.x <- rank.shape(X)
     Rcov.y <- rank.shape(Y)
-    sq.Rcov.x <- ICSNP:::mat.sqrt(solve(Rcov.x))
-    sq.Rcov.y <- ICSNP:::mat.sqrt(solve(Rcov.y))
+    sq.Rcov.x <- mat.sqrt(solve(Rcov.x))
+    sq.Rcov.y <- mat.sqrt(solve(Rcov.y))
     X.inner <- X %*% sq.Rcov.x
     Y.inner <- Y %*% sq.Rcov.y
     R.x <- spatial.rank(X.inner, shape = FALSE)

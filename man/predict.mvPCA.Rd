@@ -16,6 +16,6 @@
 \value{
  a matrix with the predicted principal components.
 }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \keyword{methods}

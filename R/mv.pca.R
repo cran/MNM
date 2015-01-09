@@ -176,12 +176,12 @@ function (object, newdata, ...)
     newdata %*% object$loadings
 }
 
-biplot.mvPCA <-
-function (x, choices = 1:2, ...) 
-{
-    if (length(choices) != 2) 
-        stop("length of choices must be 2")
-   
-    stats:::biplot.default(x$scores[, choices], x$loadings[, choices], ...)
-    invisible()
-}
+#biplot.mvPCA <-
+#function (x, choices = 1:2, ...) 
+#{
+#    if (length(choices) != 2) 
+#        stop("length of choices must be 2")
+#   
+#    stats:::biplot.default(x$scores[, choices], x$loadings[, choices], ...)
+#    invisible()
+#}

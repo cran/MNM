@@ -23,7 +23,7 @@ needed for other methods.
 \details{
 Note that for \code{rank} scores the intercept, even when specified in the model, is not considered a coefficient.
 }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \keyword{methods}
 

@@ -1,5 +1,10 @@
 LOG of the CHANGES in the package MNM
 
+Version 1.0-1
+
+* fixing some typing errors and reducing the dependencies
+* changing the maintainer email address
+
 Version 1.0-0
 
 Updating some references and modifying the citation of the package

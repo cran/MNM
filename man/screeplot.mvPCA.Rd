@@ -26,7 +26,7 @@
   A screeplot.
 }
 
-\author{ Klaus Nordhausen, \email{klaus.nordhausen@uta.fi}}
+\author{ Klaus Nordhausen}
 
 \seealso{ \code{\link{mvPCA}}}
 \examples{

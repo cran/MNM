@@ -50,7 +50,7 @@ plotMvloc(est1, est2 = NULL, est3 = NULL, X = NULL, alim = NULL,
    A scatterplot matrix.
 }
 
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \seealso{ \code{\link[ellipse]{ellipse}}, \code{\link{plotShape} }}
 

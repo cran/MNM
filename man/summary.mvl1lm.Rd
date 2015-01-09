@@ -24,7 +24,7 @@ minimal number of _significant_ digits.
 }
 }
 
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \keyword{methods}
 

@@ -5,15 +5,15 @@
 \title{
 Multivariate Nonparametric Methods. An Approach Based on Spatial Signs and Ranks.}
 \description{
-The package provides multivariate tests, estimates and methods based on the identity score, spatial sign score and spatial rank score. The methods include one and c-sample problems, shape estimation and testing, 
+Multivariate tests, estimates and methods based on the identity score, spatial sign score and spatial rank score are provided. The methods include one and c-sample problems, shape estimation and testing, 
 linear regression and principal components.
 }
 \details{
 \tabular{ll}{
 Package: \tab MNM\cr
 Type: \tab Package\cr
-Version: \tab 1.0-0\cr
-Date: \tab 2011-07-18\cr
+Version: \tab 1.0-1\cr
+Date: \tab 2015-01-09\cr
 License: \tab GPL (>= 2)\cr
 }
 
@@ -28,7 +28,7 @@ The methods implemented here are mainly described in Oja (2010) and the package 
 \author{
 Klaus Nordhausen, Jyrki \enc{Möttönen}{Mottonen} and Hannu Oja
 
-Maintainer: Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} 
+Maintainer: Klaus Nordhausen, \email{klaus.nordhausen@utu.fi} 
 
 }
 

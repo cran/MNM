@@ -44,7 +44,7 @@
   while((diff>eps)&(iter<maxiter))
     {
       iter<-iter+1
-      sqrtG<-SpatialNP:::mat.sqrt(G)               
+      sqrtG<-mat.sqrt(G)               
       #z <- x%*%t(solve(sqrtG))
       z <- tcrossprod(x, syminv(sqrtG))
         
@@ -102,7 +102,7 @@
   while((diff>eps)&(iter<maxiter))
     {
       iter<-iter+1
-      sqrtG<-SpatialNP:::mat.sqrt(G)
+      sqrtG<-mat.sqrt(G)
       #xg<-x%*%t(solve(sqrtG))
       xg<-tcrossprod(x, syminv(sqrtG))
       for(i in 1:n)
@@ -145,7 +145,7 @@
   #invC <- solve(C)
   invC <- syminv(C)
   rdotj<-by(z,treatment,colSums)
-  rcr<-sapply(rdotj, MNM:::my.quad.from, B.inv = invC, simplify = T)
+  rcr<-sapply(rdotj, my.quad.from, B.inv = invC, simplify = T)
   w0 <- ((k-1)/(n*k))*sum(rcr)
 
   #Calculate the p-value
@@ -218,7 +218,7 @@
   #invCs <- solve(Cs)  
   invCs <- syminv(Cs)  
   rdotj<-by(sx,treatment,colSums)
-  rcr<-sapply(rdotj, MNM:::my.quad.from, B.inv = invCs, simplify = T)
+  rcr<-sapply(rdotj, my.quad.from, B.inv = invCs, simplify = T)
   w0 <- ((k-1)/(n*k))*sum(rcr)
 
   #Calculate the p-value
@@ -291,7 +291,7 @@
   # invCr <- solve(Cr)
   invCr <- syminv(Cr)  
   rdotj<-by(rx,treatment,colSums)
-  rcr<-sapply(rdotj, MNM:::my.quad.from, B.inv = invCr, simplify = T)
+  rcr<-sapply(rdotj, my.quad.from, B.inv = invCr, simplify = T)
   w0 <- ((k-1)/(n*k))*sum(rcr)
 
   #Calculate the p-value
@@ -340,7 +340,7 @@
   n<-nlevels(block)
     
   rdotj<-by(z,treatment,colSums)
-  rcr<-sapply(rdotj, MNM:::my.quad.from, B.inv = B.inv, simplify = T)
+  rcr<-sapply(rdotj, my.quad.from, B.inv = B.inv, simplify = T)
   w <- ((k-1)/(n*k))*sum(rcr)
   w
 }

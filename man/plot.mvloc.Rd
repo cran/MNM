@@ -23,7 +23,7 @@ Visually presents and compares different multivariate location estimates and the
   The figure can be used to compare different multivariate location estimates. The location of the legend is currently problematic and it is
   recommended that the user should provide the coordinates for the legend. The function calls \code{\link{plotMvloc}}. 
 }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \seealso{ \code{\link{plotMvloc} }}
 

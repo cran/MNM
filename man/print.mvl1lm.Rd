@@ -24,7 +24,7 @@ needed for other methods.
 }
 }
 
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \keyword{methods}
 

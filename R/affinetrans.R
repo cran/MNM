@@ -11,7 +11,7 @@ affine.trans <- function(X, A=diag(1, dim(X)[2]), b= rep(0, dim(X)[2]), A.sqrt=F
     if (!is.vector(b) | length(b) != p) stop("b must be a vector of length p")
     if (!is.matrix(A) | dim(A)[1] != p | dim(A)[2] !=p ) stop("A must be a p x p matrix")
     
-    if (A.sqrt) A <- ICSNP:::mat.sqrt(A)
+    if (A.sqrt) A <- mat.sqrt(A)
     
     X <- tcrossprod(X,A)
     X <- sweep(X, 2, b, "+")

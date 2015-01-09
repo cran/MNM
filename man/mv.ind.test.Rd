@@ -55,7 +55,7 @@ the approximative method for the computation of the p-value is available.
 \cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}
 }
 
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \examples{
 X <- rmvt(150,diag(1,3),df=3)

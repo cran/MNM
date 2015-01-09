@@ -35,7 +35,7 @@ mv.shape.test(X, score = "identity", location = "est",
 
 \cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}
  }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 
 \seealso{\code{\link[SpatialNP]{sr.sphere.test}}}

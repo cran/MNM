@@ -45,7 +45,7 @@ function(X, score="identity", stand="outer", maxiter=100, eps=1e-6, na.action=na
                     attr(SIGNS,"center")<-NULL
                     attr(SIGNS,"shape")<-NULL
                     C.inv<-solve(C)
-                    H<- SpatialNP:::mat.sqrt(C.inv)
+                    H<- mat.sqrt(C.inv)
                     X.inner <- sweep(X,2,location) %*% H
                     r<-SpatialNP:::norm(X.inner)
                     w.SIGNS<- SIGNS/sqrt(r)
@@ -69,7 +69,7 @@ function(X, score="identity", stand="outer", maxiter=100, eps=1e-6, na.action=na
                     location<-as.vector(attr(SIGNRANKS,"center"))
                     attr(SIGNRANKS,"center")<-NULL
                     attr(SIGNRANKS,"shape")<-NULL
-                    Xsums<- SpatialNP:::pairsum(sweep(X,2,location))
+                    Xsums<- pair.sum(sweep(X,2,location))
                     r<-SpatialNP:::norm(Xsums)
                     w.Xsums<- Xsums/(r^1.5)
                     r.sum<-sum(1/r)
@@ -89,9 +89,9 @@ function(X, score="identity", stand="outer", maxiter=100, eps=1e-6, na.action=na
                     C.inv<-solve(C)
                     attr(SIGNRANKS,"center")<-NULL
                     attr(SIGNRANKS,"shape")<-NULL
-                    H<- SpatialNP:::mat.sqrt(C.inv)
+                    H<- mat.sqrt(C.inv)
                     X.inner <- sweep(X,2,location) %*% H
-                    X.sums<- SpatialNP:::pairsum(X.inner)
+                    X.sums<- pair.sum(X.inner)
                     r<-SpatialNP:::norm(X.sums)
                     w.Xsums<- X.sums/(r^1.5)
                     r.sum<-sum(1/r)

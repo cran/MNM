@@ -35,7 +35,7 @@ mvPCA(X, score = "identity", estimate = "outer",
 }
 
 \references{\cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. } }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \seealso{\code{\link{princomp}}, \code{\link{prcomp}}}
 

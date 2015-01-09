@@ -27,7 +27,7 @@ Bcov <- kronecker(Sigma, D.mat.inv, make.dimnames = TRUE)
 P.X <- X %*% backsolve(ch.D, forwardsolve(ch.D, t(X), upper.tri=TRUE, transpose=TRUE))
 Q.2 <- n * sum(diag(crossprod(Y,P.X) %*% Y %*% syminv(crossprod(Y))))
 p.value <- 1 - pchisq(Q.2,df=dfs)
-method <- "Multivariate regression using identiy scores"
+method <- "Multivariate regression using identity scores"
 list(coefficients=betas, residuals = resids, fitted.values= fits, vcov=Bcov, statistic=Q.2, parameter=dfs,
      p.value=p.value, method=method, scores="identity", stand="outer")
 }
@@ -60,7 +60,7 @@ while(differ>eps)
              stop("maxiter reached without convergence")
             } 
         
-        S.sqrt <- SpatialNP:::mat.sqrt(S.init)
+        S.sqrt <- mat.sqrt(S.init)
         S.sqrt.inv <- syminv(S.sqrt)    
         E <- (Y - X %*% B.init) %*% S.sqrt.inv
         norm.E <- SpatialNP:::norm(E)
@@ -89,7 +89,7 @@ fits <-  tcrossprod(X,t(B.init))
 resids <-  Y - fits
 
 
-S.sqrt <- SpatialNP:::mat.sqrt(S.init)
+S.sqrt <- mat.sqrt(S.init)
 S.sqrt.inv <- syminv(S.sqrt)  
 E.resids <- (Y - X %*% B.init) %*% S.sqrt.inv
 r<-SpatialNP:::norm(E.resids)
@@ -255,7 +255,7 @@ while(differ>eps)
              stop("maxiter reached without convergence")
             } 
         #print(c(iter,differ))
-        S.sqrt <- SpatialNP:::mat.sqrt(S.init)
+        S.sqrt <- mat.sqrt(S.init)
         S.sqrt.inv <- syminv(S.sqrt)
         E <- (Y2 - X2 %*% B.init) %*% S.sqrt.inv
         norm.E <- SpatialNP:::norm(E)
@@ -279,7 +279,7 @@ while(differ>eps)
 #rownames(B.init)<- colnames(X)      
 fits <-  tcrossprod(X,t(B.init))
 resids <-  Y - fits
-S.sqrt <- SpatialNP:::mat.sqrt(S.init)
+S.sqrt <- mat.sqrt(S.init)
 S.sqrt.inv <- syminv(S.sqrt)
 resids.S <- resids %*% S.sqrt.inv
 

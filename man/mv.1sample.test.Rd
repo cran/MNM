@@ -44,7 +44,7 @@ mv.1sample.test(X, mu = 0, score = "identity", stand = "outer",
 \cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}
  } 
 
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
  
 \seealso{ \code{\link[ICSNP]{HotellingsT2}},  \code{\link[SpatialNP]{sr.loc.test}} }

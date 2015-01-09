@@ -12,7 +12,7 @@
   \item{\dots}{ needed for other printing methods.}
 }
 
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \keyword{print}
 \keyword{methods}

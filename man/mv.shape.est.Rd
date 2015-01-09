@@ -28,7 +28,7 @@ mv.shape.est(X, score = "identity", estimate = "outer",
 
 \cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}
 }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 
 \seealso{ \code{\link[stats]{cov}}, \code{\link[ICSNP]{tyler.shape}}, \code{\link[ICSNP]{duembgen.shape}}, \code{\link[ICSNP]{HR.Mest}}, \code{\link[SpatialNP]{spatial.shape}}}

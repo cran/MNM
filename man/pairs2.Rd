@@ -32,7 +32,7 @@ Arguments to be passed to methods, such as graphical
 }
 
 
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 
 

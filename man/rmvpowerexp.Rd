@@ -25,7 +25,7 @@ rmvpowerexp(n, Location = rep(0, nrow(Scatter)),
   a matrix.
 }
 \references{\cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. } }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \seealso{ \code{\link[mvtnorm]{rmvnorm}}, \code{\link[mvtnorm]{rmvt}} }
 \examples{

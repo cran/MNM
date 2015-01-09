@@ -27,6 +27,6 @@ For details see Chapter 13 of the MNM book.
 \references{
 \cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. } 
 }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \keyword{methods}

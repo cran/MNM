@@ -15,6 +15,6 @@
   \item{digits}{number of digits for rounding.}
 }
 
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 \keyword{print}

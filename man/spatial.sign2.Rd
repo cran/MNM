@@ -57,8 +57,8 @@ The spatial signs U of X with location \eqn{\mu}{mu} and shape V are given by tr
 }
 
 \author{
-Klaus Nordhausen, \email{klaus.nordhausen@uta.fi}
-}
+Klaus Nordhausen}
+
 
 \seealso{
 \code{\link[ICSNP]{spatial.sign}}, \code{\link[ICSNP]{HR.Mest}}

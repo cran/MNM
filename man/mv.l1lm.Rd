@@ -108,7 +108,7 @@ Otherwise also the function \code{\link{cbind}} can be used on the left side of 
 
 \cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}
 }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

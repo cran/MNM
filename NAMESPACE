@@ -1,4 +1,7 @@
-import("stats","ellipse","SpatialNP","ICSNP","graphics")
+import("stats","SpatialNP","ICSNP","graphics")
+importFrom("ellipse","ellipse")
+importFrom("ICS","covOrigin")
+
 export(mv.1sample.est, mv.1sample.test,plotMvloc, mv.2sample.est, mv.Csample.test, mv.2way.test, mv.2way.est, mv.shape.est, mvPCA, affine.trans, mv.shape.test, 
 plotShape, mv.ind.test, runifsphere, rmvpowerexp, pairs2, mv.l1lm, spatial.sign2)
 S3method(print,mvcloc)

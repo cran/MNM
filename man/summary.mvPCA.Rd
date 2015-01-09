@@ -25,7 +25,7 @@
   'object' with additional components 'cutoff' and 'print.loadings'.
 }
 
-\author{ Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{ Klaus Nordhausen}
 \seealso{ \code{\link{mvPCA}}}
 \examples{
 data(iris)

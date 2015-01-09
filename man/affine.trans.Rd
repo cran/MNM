@@ -22,7 +22,7 @@ affine.trans(X, A = diag(1, dim(X)[2]), b = rep(0, dim(X)[2]),
 \value{
   a matrix.
 }
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 \examples{
 data(iris)
 IRIS <- iris[,1:4]

@@ -40,7 +40,7 @@ mv.1sample.est(X, score = "identity", stand = "outer", maxiter = 100,
 \references{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. 
 
 \cite{Nordhausen, K. and Oja, H. (2011), Multivariate L1 Methods: The Package MNM, \emph{Journal of Statistical Software}, \bold{43}, 1-28.}}
-\author{Klaus Nordhausen, \email{klaus.nordhausen@uta.fi} }
+\author{Klaus Nordhausen}
 
 
 \seealso{ \code{\link[ICSNP]{spatial.sign}}, \code{\link[SpatialNP]{spatial.signrank}}, \code{\link[ICSNP]{spatial.median}}, \code{\link[ICSNP]{HR.Mest}}}
