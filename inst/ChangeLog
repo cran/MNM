@@ -1,5 +1,10 @@
 LOG of the CHANGES in the package MNM
 
+Version 1.0-2
+
+* Fixing soem notes from CRAN checks
+* Fixing an error in rpowerexp reported by Davy Paindaveine
+
 Version 1.0-1
 
 * fixing some typing errors and reducing the dependencies

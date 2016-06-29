@@ -63,7 +63,7 @@ while(differ>eps)
         S.sqrt <- mat.sqrt(S.init)
         S.sqrt.inv <- syminv(S.sqrt)    
         E <- (Y - X %*% B.init) %*% S.sqrt.inv
-        norm.E <- SpatialNP:::norm(E)
+        norm.E <- RowNorms(E)
         if (min(norm.E) < eps.S) norm.E <- ifelse(norm.E < eps.S, eps.S, norm.E)
         E.sign <- sweep(E,1,norm.E, "/")
         #E.sign <- spatial.sign(E, center=FALSE, shape=FALSE)
@@ -92,7 +92,7 @@ resids <-  Y - fits
 S.sqrt <- mat.sqrt(S.init)
 S.sqrt.inv <- syminv(S.sqrt)  
 E.resids <- (Y - X %*% B.init) %*% S.sqrt.inv
-r<-SpatialNP:::norm(E.resids)
+r<-RowNorms(E.resids)
 R.signs <- sweep(E.resids,1,r, "/")
 
 n.red<-n
@@ -156,7 +156,7 @@ while(differ>eps)
             } 
         #print(c(iter,differ))
         E <- Y - X %*% B.init
-        norm.E <- SpatialNP:::norm(E)
+        norm.E <- RowNorms(E)
         if (min(norm.E) < eps.S) norm.E <- ifelse(norm.E < eps.S, eps.S, norm.E)
         E.sign <- sweep(E,1,norm.E, "/")
         X.E <- X / sqrt(norm.E)
@@ -175,7 +175,7 @@ colnames(B.init)<- colnames(Y)
 rownames(B.init)<- colnames(X)        
 fits <-  tcrossprod(X,t(B.init))
 resids <-  Y - fits
-r<-SpatialNP:::norm(resids)
+r<-RowNorms(resids)
 R.signs <- sweep(resids,1,r, "/")
 n.red<-n
 r.ind <- which(r < eps.S)
@@ -187,7 +187,7 @@ if (length(r.ind>0)){
       
 #R.signs <- spatial.sign(resids, center=FALSE, shape=FALSE)
 
-#r<-SpatialNP:::norm(resids)
+#r<-RowNorms(resids)
 w.SIGNS<- R.signs/sqrt(r)
 r.sum<-sum(1/r)
 A <- (diag(r.sum,p)- crossprod(w.SIGNS))/n.red
@@ -258,7 +258,7 @@ while(differ>eps)
         S.sqrt <- mat.sqrt(S.init)
         S.sqrt.inv <- syminv(S.sqrt)
         E <- (Y2 - X2 %*% B.init) %*% S.sqrt.inv
-        norm.E <- SpatialNP:::norm(E)
+        norm.E <- RowNorms(E)
         if (min(norm.E) < eps.S) norm.E <- ifelse(norm.E < eps.S, eps.S, norm.E)
         E.sign <- sweep(E,1,norm.E, "/")
         X2.E <- X2 / sqrt(norm.E)
@@ -286,7 +286,7 @@ resids.S <- resids %*% S.sqrt.inv
 resids2 <- (Y2 - X2 %*% B.init) %*% S.sqrt.inv
 #R2.signs <- spatial.sign(resids2, center=FALSE, shape=FALSE)
 
-r2<-SpatialNP:::norm(resids2)
+r2<-RowNorms(resids2)
 n.red<-n
 r.ind <- which(r2 < eps.S)
 if (length(r.ind>0)){
@@ -392,7 +392,7 @@ while(differ>eps)
             } 
         # print(c(iter,differ))
         E <- Y2 - X2 %*% B.init
-        norm.E <- SpatialNP:::norm(E)
+        norm.E <- RowNorms(E)
         if (min(norm.E) < eps.S) norm.E <- ifelse(norm.E < eps.S, eps.S, norm.E)
         E.sign <- sweep(E,1,norm.E, "/")
         X2.E <- X2 / sqrt(norm.E)
@@ -412,7 +412,7 @@ resids <-  Y - fits
 resids2 <- Y2 -tcrossprod(X2,t(B.init))
 #R2.signs <- spatial.sign(resids2, center=FALSE, shape=FALSE)
 
-r2<-SpatialNP:::norm(resids2)
+r2<-RowNorms(resids2)
 n.red<-n
 r.ind <- which(r2 < eps.S)
 if (length(r.ind>0)){

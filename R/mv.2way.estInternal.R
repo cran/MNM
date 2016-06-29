@@ -180,7 +180,7 @@
     for(j in (i+1):k){
       diff<- x[treatment==levels(treatment)[j],]-
              x[treatment==levels(treatment)[i],]
-      r<-SpatialNP:::norm(diff)
+      r<-RowNorms(diff)
       u<-spatial.sign(diff,center=FALSE,shape=FALSE)
       A<-A+(1/n)*(sum(1/r)*diag(d)-t(u)%*%diag(1/r)%*%u)
     }

@@ -64,7 +64,7 @@ function(X, center=TRUE, shape=TRUE, eps.S=1e-5, na.action=na.fail,...)
     }
 
     y<-sweep(X,2,center)%*%syminv(mat.sqrt(shape))
-    y.norm <- SpatialNP:::norm(y) 
+    y.norm <- RowNorms(y) 
     spatial.signs<-sweep(y,1,y.norm,"/")
     ind.eps.S <- which(y.norm <= eps.S)
     if (length(ind.eps.S != 0)){

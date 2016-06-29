@@ -151,7 +151,7 @@ CssTestInner <- function(X,g,method,n.simu,...)
  
     T.g<-by(Ts,g,colMeans)
     
-    Q.i<-  sum(n.g*SpatialNP:::norm(matrix(unlist(T.g),ncol=p,byrow=T))^2)
+    Q.i<-  sum(n.g*RowNorms(matrix(unlist(T.g),ncol=p,byrow=T))^2)
 
  
     Q.2 <- p*Q.i
@@ -169,7 +169,7 @@ CssTestInner <- function(X,g,method,n.simu,...)
         {
         parameter <- n.simu
         names(parameter) <- "replications"
-        statistics<-replicate(n.simu,  sum(n.g*SpatialNP:::norm(matrix(unlist(by(Ts,g[sample(1:n,n)],colMeans)),ncol=p,byrow=T))^2))
+        statistics<-replicate(n.simu,  sum(n.g*RowNorms(matrix(unlist(by(Ts,g[sample(1:n,n)],colMeans)),ncol=p,byrow=T))^2))
         p.value<-mean(statistics>Q.i)
         }
     names(Q.2) <- "Q.2"
@@ -190,9 +190,9 @@ CssTestInner <- function(X,g,method,n.simu,...)
     T.g<-by(Ts,g,colMeans)
     
    
-    Q.total<- mean(SpatialNP:::norm(Ts)^2)
+    Q.total<- mean(RowNorms(Ts)^2)
     
-    Q.i<-  sum(n.g*SpatialNP:::norm(matrix(unlist(T.g),ncol=p,byrow=T))^2)
+    Q.i<-  sum(n.g*RowNorms(matrix(unlist(T.g),ncol=p,byrow=T))^2)
  
     Q.2 <- p*Q.i / Q.total
     names(Q.2) <- "Q.2"
@@ -209,7 +209,7 @@ CssTestInner <- function(X,g,method,n.simu,...)
         {
         parameter <- n.simu
         names(parameter) <- "replications"
-        statistics<-replicate(n.simu, sum(n.g*SpatialNP:::norm(matrix(unlist(by(Ts,g[sample(1:n,n)],colMeans)),ncol=p,byrow=T))^2))
+        statistics<-replicate(n.simu, sum(n.g*RowNorms(matrix(unlist(by(Ts,g[sample(1:n,n)],colMeans)),ncol=p,byrow=T))^2))
         p.value<- mean(statistics>Q.i)
         }
     list(statistic=Q.2,p.value=p.value,parameter=parameter, method=METHOD)

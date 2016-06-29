@@ -9,7 +9,7 @@ function(n, Location = rep(0, nrow(Scatter)), Scatter = diag(length(Location)), 
         if (!all(ev$values >= -sqrt(.Machine$double.eps) * abs(ev$values[1]))) {warning("Scatter is numerically not positive definite")}
         ScatterSqrt <- ev$vectors %*% diag(sqrt(ev$values), length(ev$values)) %*% t(ev$vectors)
         
-        radius <- (rgamma(n, shape = p/(2*Beta), scale = 1/2))^(1/(2*Beta))
+        radius <- (rgamma(n, shape = p/(2*Beta), rate = 1/2))^(1/(2*Beta))
         
         un <- runifsphere(n=n,p=p)
         mvpowerexp <- radius * un %*% ScatterSqrt

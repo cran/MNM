@@ -129,7 +129,7 @@ sign.est.outer<-function(X1,X2, p, n1, n2, maxiter, eps, ...){
                     SIGNS<-rbind(SIGNS.X1,SIGNS.X2)
                     X1.centered <- sweep(X1,2,center.X1)
                     X2.centered <- sweep(X2,2,center.X2)
-                    r<-SpatialNP:::norm(as.matrix(rbind(X1.centered,X2.centered)))
+                    r<-RowNorms(as.matrix(rbind(X1.centered,X2.centered)))
                     w.SIGNS<- SIGNS/sqrt(r)
                     r.sum<-sum(1/r)
                     A<- (diag(r.sum,p)- t(w.SIGNS) %*% w.SIGNS)/n
@@ -158,7 +158,7 @@ sign.est.inner<-function(X1, X2, p, n1, n2, maxiter, eps,...){
                     attr(SIGNS.X2,"center")<-NULL
                     attr(SIGNS.X2,"shape")<-NULL
                     SIGNS<-rbind(SIGNS.X1,SIGNS.X2)
-                    r<-SpatialNP:::norm(as.matrix(rbind(X1.inner,X2.inner)))
+                    r<-RowNorms(as.matrix(rbind(X1.inner,X2.inner)))
                     w.SIGNS<- SIGNS/sqrt(r)
                     r.sum<-sum(1/r)
                     A<- (diag(r.sum,p)- t(w.SIGNS) %*% w.SIGNS)/n
@@ -182,7 +182,7 @@ rank.est.outer<-function(X1,X2,p,n1,n2,maxiter, eps, ...)
                     location <- spatial.median(X1[index1,]-X2[index2,], maxiter=maxiter, eps=eps, ...)
                     X2.equalX1 <- sweep(X2,2,location,"+")
                     X1minusX2 <- X1[index1,]-X2.equalX1[index2,]
-                    r<-SpatialNP:::norm(X1minusX2)
+                    r<-RowNorms(X1minusX2)
                     w.X1minusX2<- X1minusX2/(r^1.5)
                     r.sum<-sum(1/r)
                     A<- (diag(r.sum,p)- t(w.X1minusX2) %*% w.X1minusX2)/(length(r))
@@ -219,7 +219,7 @@ rank.est.inner<-function(X1, X2, p, n1, n2, maxiter, eps, ...)
                     Y1minusY2 <- Y1[index1,]-Y2.equalY1[index2,]
                   
                    
-                    r<-SpatialNP:::norm(Y1minusY2)
+                    r<-RowNorms(Y1minusY2)
                     w.Ysums<- Y1minusY2/(r^1.5)
                     r.sum<-sum(1/r)
                     A<- (diag(r.sum,p)- t(w.Ysums) %*% w.Ysums)/(length(r))

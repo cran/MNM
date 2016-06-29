@@ -101,7 +101,8 @@ srloc.outer<-function(X,method,n.simu)
     # Assumes hypothesis is origin
     n<-dim(X)[1]
     p<-dim(X)[2]
-    SCORES <- SpatialNP:::signranks(X)   
+    #SCORES <- SpatialNP:::signranks(X)   
+    SCORES <- spatial.signrank(X, center=FALSE, shape=FALSE)
     B<- crossprod(SCORES)/n
     B.inv <- solve(B)
     Tstat<-colMeans(SCORES)
@@ -138,14 +139,14 @@ srloc.inner<-function(X,method,n.simu)
     p<-dim(X)[2]
     SCORES <- spatial.signrank(X,center=F)   
     Q1<- sum(colMeans(SCORES)^2)
-    Q2<- mean(SpatialNP:::norm(SCORES)^2)
+    Q2<- mean(RowNorms(SCORES)^2)
     ratio<-Q1 / Q2
     STATISTIC<- n * p * ratio
     METHOD<-"One sample spatial signed-rank test\n using inner standardization"
     names(STATISTIC) <- "Q.2"
     
      f.stat<- function(Y)  {Q1<- sum(colMeans(Y)^2)
-                            Q2<- mean(SpatialNP:::norm(Y)^2)
+                            Q2<- mean(RowNorms(Y)^2)
                             ratio<-Q1 / Q2
                             }
     
