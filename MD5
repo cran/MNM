@@ -1,4 +1,4 @@
-1bfd40808915baea01d4a452132d9dd3 *DESCRIPTION
+1535801ecf9834930dd0ac61f946666e *DESCRIPTION
 2f03ca8321093ac1561d41bc18a1c663 *NAMESPACE
 9f7fe97e8010e18953dc79d5879c4921 *R/MNMinternals.R
 ad82e57b18c5852968cb96eafd1852dd *R/affinetrans.R
@@ -38,10 +38,10 @@ b9e859b98670ebe62d6166e31249ac19 *R/runifsphere.R
 ee63d274850ff0d408c378ab47dbfe22 *R/summary.mvcloc.R
 fa80b6779fb4ee9fabd17bafc24b6620 *R/summary.mvloc.R
 86c917b18a8cddee8ddc33bc1823d569 *R/syminv.R
-ff4d328882a3f13724c71d052cfad5d7 *data/beans.rda
+5148ce234f1b1b64553cc907a9194eec *data/beans.rda
 c7387a49edb2e4f31d7b600cedc9daad *inst/CITATION
-3b8d9901f7d24f41af308567d801a1b0 *inst/ChangeLog
-e263ca9ca983dd9e8500b35da70df078 *man/MNM-package.Rd
+be62949af187ec74116510c8ec957ffe *inst/ChangeLog
+8648d93e24440013e60101f8df439659 *man/MNM-package.Rd
 13b734b4898b3a5b90c66b6aae6a6923 *man/affine.trans.Rd
 adc9c04f476b0ed73fd8f2b33a3b7005 *man/anova.mvl1lm.Rd
 160c137789d4579218fb693a01649cd7 *man/beans.Rd
