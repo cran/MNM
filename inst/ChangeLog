@@ -1,5 +1,13 @@
 LOG of the CHANGES in the package MNM
 
+Version 1.0-4
+
+* removing Latin encoding as requested by CRAN
+* changing the maintainer email address
+* removing Flury from suggests as it is not available on CRAN anymore
+* minor changes to documentation
+* CRAN asked to change the function names of the internal functions sign.est.outer and sign.est.inner which are now called spatial.sign.est.outer and spatial.sign.est.inner
+
 Version 1.0-3
 
 * Some minor update in documentation

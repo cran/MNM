@@ -59,11 +59,11 @@ mv.2sample.est <- function(X,g,score="identity", stand="outer", maxiter=100, eps
         "sign"={
                switch(stand,
                     "outer" = {
-                    sign.est.outer(X1=X1,X2=X2,p=p,n1=n.X1,n2=n.X2, maxiter=maxiter, eps=eps,...)
+                    spatial.sign.est.outer(X1=X1,X2=X2,p=p,n1=n.X1,n2=n.X2, maxiter=maxiter, eps=eps,...)
                     }
                ,
                     "inner" = {
-                    sign.est.inner(X1=as.matrix(X1),X2=as.matrix(X2),p=p,n1=n.X1,n2=n.X2, maxiter=maxiter, eps=eps, ...)
+                    spatial.sign.est.inner(X1=as.matrix(X1),X2=as.matrix(X2),p=p,n1=n.X1,n2=n.X2, maxiter=maxiter, eps=eps, ...)
                     }
                     )
                     }

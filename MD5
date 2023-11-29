@@ -1,4 +1,4 @@
-1535801ecf9834930dd0ac61f946666e *DESCRIPTION
+b4263f5742fa3e92da6a7ccb6912f69b *DESCRIPTION
 2f03ca8321093ac1561d41bc18a1c663 *NAMESPACE
 9f7fe97e8010e18953dc79d5879c4921 *R/MNMinternals.R
 ad82e57b18c5852968cb96eafd1852dd *R/affinetrans.R
@@ -18,8 +18,8 @@ c3697306835fd7929f8c860905f1a1b0 *R/mv.l1lm.Internal.R
 d0c33c2caf8d13706fdb5d408b4d5f63 *R/mv.l1lm.Methods.R
 b613e2d97160e833cd64276377c3fdf9 *R/mv.l1lm.R
 55af0f8f3e0b463dcb207eb4e4eb737f *R/mv.pca.R
-8bc1cde32594c4e0f0c4f4b648444f69 *R/mv2sampleEst.R
-00fa8e0beba3db28ce537f74f1e75e08 *R/mv2sampleEstInternal.R
+08542fdbbb24f499166508e74fe36941 *R/mv2sampleEst.R
+2b39b0846c3e0856eb31ba72839b7e55 *R/mv2sampleEstInternal.R
 c9be3a0bd8f1de1f5e88b635f695db30 *R/mvCsampleTest.R
 4858b0e92f9bade66230e182df1a3a7d *R/mvPCA.R
 50eb2695eb93a801395814a4517807cb *R/mvshapeest.R
@@ -38,10 +38,11 @@ b9e859b98670ebe62d6166e31249ac19 *R/runifsphere.R
 ee63d274850ff0d408c378ab47dbfe22 *R/summary.mvcloc.R
 fa80b6779fb4ee9fabd17bafc24b6620 *R/summary.mvloc.R
 86c917b18a8cddee8ddc33bc1823d569 *R/syminv.R
-5148ce234f1b1b64553cc907a9194eec *data/beans.rda
-c7387a49edb2e4f31d7b600cedc9daad *inst/CITATION
-be62949af187ec74116510c8ec957ffe *inst/ChangeLog
-8648d93e24440013e60101f8df439659 *man/MNM-package.Rd
+f6eab92bb45140cc6f538dc88e7fe649 *build/partial.rdb
+91656b984ff7ff3f805fc73695784a7e *data/beans.rda
+e203efbdaf977f412ee525d74d920f72 *inst/CITATION
+25253abda02717337333e22553983d2a *inst/ChangeLog
+15ac4edb1fe5f40823567e74b08327ea *man/MNM-package.Rd
 13b734b4898b3a5b90c66b6aae6a6923 *man/affine.trans.Rd
 adc9c04f476b0ed73fd8f2b33a3b7005 *man/anova.mvl1lm.Rd
 160c137789d4579218fb693a01649cd7 *man/beans.Rd
@@ -50,11 +51,11 @@ ab052bb1611f515466e64e91bbc872b1 *man/coef.mvl1lm.Rd
 b843bb85b0a84f1132399b72cf3d91bc *man/mv.1sample.est.Rd
 407c8b3b9b0432b3245bff3609166dbb *man/mv.1sample.test.Rd
 ab6d56de9e2a4493e17b83dcf2acd419 *man/mv.2sample.est.Rd
-335b9ea3fecb145d9efd1a29411ec5ea *man/mv.2way.est.Rd
-e81b88b626350f21c95734428cc1ab2d *man/mv.2way.test.Rd
+67ff3618cf652fec7e3485a92c9bb2b8 *man/mv.2way.est.Rd
+6d584c1b2df79a1205ecbc7cef2ac1f8 *man/mv.2way.test.Rd
 75f7e93857067a74f4ecb191c2cfc4be *man/mv.Csample.test.Rd
 97ba23b16224677ccae1f953b4036ff1 *man/mv.ind.test.Rd
-9f951724277a9ab7479b9579fbf5102f *man/mv.l1lm.Rd
+f36a458c84ea372c05a62466002cf211 *man/mv.l1lm.Rd
 63035106fce15f606d4d2a6afc146ae0 *man/mv.shape.est.Rd
 7558e01d09d0150580ddae25b8933cd2 *man/mv.shape.test.Rd
 6b42f72cf15f7eff3f075183ca93937b *man/mvPCA.Rd
@@ -67,7 +68,7 @@ fb42896aaf81b42e30bd7a4131acd38d *man/plotMvloc.Rd
 d5f36d27691467f79e124df57d594043 *man/predict.mvl1lm.Rd
 4a6a53f8d59a76a6606af3e423081e16 *man/print.anovamvl1lm.Rd
 4c626e51463c43c7c6875844c3c2574f *man/print.mvPCA.Rd
-b6ee933d3f4487ecea396e678df1494d *man/print.mvcloc.Rd
+d651527a55dd0b2f327dffedc2ba7a13 *man/print.mvcloc.Rd
 5e08140f826a1c905cdab75f7eec3ee9 *man/print.mvl1lm.Rd
 d7cfd30772e1ff3df4d73c3861047bfe *man/print.mvloc.Rd
 546f8f2b7cb993774d4e663744d804f5 *man/residuals.mvl1lm.Rd
@@ -76,7 +77,7 @@ e3b3161e93eb5ce767992ab11f73abf0 *man/rmvpowerexp.Rd
 f45ffb1c4aa937205c0c7710e1f30a56 *man/screeplot.mvPCA.Rd
 d21b09e3ebd8a3991684ea0fa2b556fe *man/spatial.sign2.Rd
 20343e2ef742dacded7b908373749c4a *man/summary.mvPCA.Rd
-44f8af75153f3a05aaa3f34860c1e4ed *man/summary.mvcloc.Rd
+7eba42bff171c966d29c85976800e1c4 *man/summary.mvcloc.Rd
 855cc3e26b15dbc815d83e9341358f09 *man/summary.mvl1lm.Rd
 8fbfaf0cdf50ad5a930b39f1a70149ef *man/summary.mvloc.Rd
 def37c44a89ff6035b8594fc09a0c1e8 *man/vcov.mvl1lm.Rd

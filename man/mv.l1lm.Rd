@@ -76,13 +76,13 @@ slightly from the one returned by the function \code{\link{mv.2sample.est}} sinc
 
 In general it is recommended to use the \code{data} argument and specify there the data frame that contains the variables and matrices. For having a matrix Y in a data frame 
 for example the following methods work:
-\itemize{
-\item{}{
+\describe{
+\item{a)}{
 \code{MyData <- data.frame(I(Y),...)}
 
 or
 }
-\item{}{
+\item{b)}{
 \code{MyData <- data.frame(...)} \cr
 \code{MyData$Y <- Y}
 }}

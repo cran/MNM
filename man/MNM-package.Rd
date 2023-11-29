@@ -3,20 +3,13 @@
 \alias{MNM}
 \docType{package}
 \title{
-Multivariate Nonparametric Methods. An Approach Based on Spatial Signs and Ranks.}
+\packageTitle{MNM}}
 \description{
 Multivariate tests, estimates and methods based on the identity score, spatial sign score and spatial rank score are provided. The methods include one and c-sample problems, shape estimation and testing, 
 linear regression and principal components.
 }
 \details{
-\tabular{ll}{
-Package: \tab MNM\cr
-Type: \tab Package\cr
-Version: \tab 1.0-3\cr
-Date: \tab 2018-02-03\cr
-License: \tab GPL (>= 2)\cr
-}
-
+\packageDESCRIPTION{MNM}
 
 The methods implemented here are mainly described in Oja (2010) and the package can be used to reproduce most of the examples in the book. The book will be refered to as the MNM book. 
 }
@@ -27,9 +20,9 @@ The methods implemented here are mainly described in Oja (2010) and the package 
 }
 
 \author{
-Klaus Nordhausen, Jyrki \enc{Möttönen}{Mottonen} and Hannu Oja
+Klaus Nordhausen, Jyrki Mottonen and Hannu Oja
 
-Maintainer: Klaus Nordhausen, \email{klaus.nordhausen@tuwien.ac.at} 
+Maintainer: \packageMaintainer{MNM}
 
 }
 

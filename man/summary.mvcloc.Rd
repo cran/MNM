@@ -14,5 +14,5 @@
   \item{\dots}{needed for other summary methods.}
   \item{digits}{number of digits for rounding.}
 }
-\author{Jyrki \enc{Möttönen}{Mottonen} \email{jyrki.mottonen@helsinki.fi}}
+\author{Jyrki Mottonen \email{jyrki.mottonen@helsinki.fi}}
 \keyword{print}

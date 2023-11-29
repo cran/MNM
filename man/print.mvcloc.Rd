@@ -15,6 +15,6 @@
 }
 
 
-\author{Jyrki \enc{Möttönen}{Mottonen} \email{jyrki.mottonen@helsinki.fi}}
+\author{Jyrki Mottonen \email{jyrki.mottonen@helsinki.fi}}
 
 \keyword{print}

@@ -40,7 +40,7 @@ mv.2way.est(x, block, treatment, score = c("identity", "sign", "rank"),
 
 \references{\cite{Oja, H. (2010), \emph{Multivariate Nonparametric Methods with R}, Springer. } }
 
-\author{Jyrki \enc{Möttönen}{Mottonen} \email{jyrki.mottonen@helsinki.fi}}
+\author{Jyrki Mottonen \email{jyrki.mottonen@helsinki.fi}}
 
 \seealso{\code{\link{mv.2way.test}}, \code{\link{mv.1sample.est}}, \code{\link{mv.2sample.est}}}  
 

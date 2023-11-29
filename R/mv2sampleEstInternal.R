@@ -115,7 +115,7 @@ Hrank<-function(X1, X2, eps = 1e-06, maxiter = 500, ...)
     
     }
 
-sign.est.outer<-function(X1,X2, p, n1, n2, maxiter, eps, ...){
+spatial.sign.est.outer<-function(X1,X2, p, n1, n2, maxiter, eps, ...){
                     n<-n1+n2
                     SIGNS.X1 <-spatial.sign(X1, center = TRUE, shape = FALSE, maxiter=maxiter, eps=eps,...)
                     SIGNS.X2 <-spatial.sign(X2, center = TRUE, shape = FALSE, maxiter=maxiter, eps=eps,...)
@@ -141,7 +141,7 @@ sign.est.outer<-function(X1,X2, p, n1, n2, maxiter, eps, ...){
                     list(location=location, vcov=scatter, est.name= "difference between spatial medians")
                     }
 
-sign.est.inner<-function(X1, X2, p, n1, n2, maxiter, eps,...){
+spatial.sign.est.inner<-function(X1, X2, p, n1, n2, maxiter, eps,...){
                     n<-n1+n2
                     C<-Hsign(X1, X2, maxiter=maxiter, eps=eps)
                     SIGNS.X1 <-spatial.sign(X1, center = TRUE, shape = C, maxiter=maxiter, eps=eps,...)
